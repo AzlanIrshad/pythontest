@@ -6,6 +6,12 @@ pipeline {
                 echo 'This is a build step'
             }
         }
+	stage('Python script') {
+            steps {
+                echo 'This is a python script'
+		sh 'python3 test.py'
+            }
+        }
         stage('test') {
             steps {
                 echo 'This is a test step'
