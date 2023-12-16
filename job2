@@ -1,13 +1,18 @@
 pipeline {
     agent any
-stages {
+ parameters {
+        choice(name: 'BRANCH', choices: ['main', 'dev'], description: 'Choose your branch')
+    }
+    
+    stages {
         stage('Checkout') {
             steps {
                 script {
-                    git branch: 'dev', credentialsId: 'c5035564-1462-4899-a674-cde0875f5b55', url: 'https://github.com/AzlanIrshad/pythontest.git'
+                    git branch: "${params.BRANCH}", credentialsId: 'c5035564-1462-4899-a674-cde0875f5b55', url: 'https://github.com/AzlanIrshad/pythontest.git'
                 }
             }
         }
+stages {
 stage('Python script') {
             steps {
                 echo 'This is a python script'
