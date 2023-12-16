@@ -31,4 +31,3 @@ stage('Python script') {
         }
     }
 }
-}
