@@ -1,15 +1,24 @@
 pipeline {
     agent any
+stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from Git repository
+                script {
+                    git branch: 'dev', credentialsId: 'c5035564-1462-4899-a674-cde0875f5b55', url: 'https://github.com/AzlanIrshad/pythontest.git'
+                }
+            }
+        }
+stage('Python script') {
+            steps {
+                echo 'This is a python script'
+                sh 'python3 test.py'
+		}
+	}
     stages {
         stage('build') {
             steps {
                 echo 'This is a build step'
-            }
-        }
-	stage('Python script') {
-            steps {
-                echo 'This is a python script'
-		sh 'python3 test.py'
             }
         }
         stage('test') {
