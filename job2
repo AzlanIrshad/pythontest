@@ -3,7 +3,6 @@ pipeline {
 stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from Git repository
                 script {
                     git branch: 'dev', credentialsId: 'c5035564-1462-4899-a674-cde0875f5b55', url: 'https://github.com/AzlanIrshad/pythontest.git'
                 }
@@ -32,4 +31,5 @@ stage('Python script') {
             }
         }
     }
+}
 }
